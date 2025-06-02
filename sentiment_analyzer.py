@@ -20,7 +20,10 @@ def get_diary_sentiment():
     for filepath in filepaths:
         with open(filepath, "r", encoding="utf-8") as file:
             content = file.read()
+
+            # the file name consists only of the diary entry date.txt, really extracting the date here
             file_name = os.path.splitext(os.path.basename(filepath))[0]
+
             pos, neg = analyze_content(content)
             diary_scores.append((file_name, pos, neg))
 
