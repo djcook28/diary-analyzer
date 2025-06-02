@@ -1,19 +1,12 @@
-import glob
-import os
+import streamlit
 import streamlit as st
 import plotly
-import sentiment_analyzer
+from sentiment_analyzer import get_diary_sentiment
 
-filepaths = glob.glob("Diaries/*.txt")
-filepaths.sort()
+diary_scores = get_diary_sentiment()
 
-diary_scores = []
+streamlit.title("Diary Tone")
 
-for filepath in filepaths:
-    with open(filepath, "r", encoding="utf-8") as file:
-        content = file.read()
-        file_name = os.path.splitext(os.path.basename(filepath))[0]
-        pos, neg = sentiment_analyzer.analyze_content(content)
-        diary_scores.append((file_name, pos, neg))
+streamlit.subheader("Positivity")
 
-print(diary_scores)
+streamlit.subheader("Negativity")
