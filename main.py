@@ -2,8 +2,7 @@ import streamlit as st
 import plotly.express as px
 from sentiment_analyzer import get_diary_sentiment
 
-diary_scores = get_diary_sentiment()
-dates, pos_score, neg_score = zip(*diary_scores)
+dates, pos_score, neg_score = get_diary_sentiment()
 
 st.title("Diary Tone")
 st.subheader("Positivity")

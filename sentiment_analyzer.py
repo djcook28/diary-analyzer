@@ -24,4 +24,4 @@ def get_diary_sentiment():
             pos, neg = analyze_content(content)
             diary_scores.append((file_name, pos, neg))
 
-    return diary_scores
+    return zip(*diary_scores)
