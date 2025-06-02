@@ -1,12 +1,15 @@
-import streamlit
 import streamlit as st
-import plotly
+import plotly.express as px
 from sentiment_analyzer import get_diary_sentiment
 
 diary_scores = get_diary_sentiment()
+dates, pos_score, neg_score = zip(*diary_scores)
 
-streamlit.title("Diary Tone")
+st.title("Diary Tone")
+st.subheader("Positivity")
+fig = px.line(x=dates, y=pos_score)
+st.plotly_chart(fig)
 
-streamlit.subheader("Positivity")
-
-streamlit.subheader("Negativity")
+st.subheader("Negativity")
+fig = px.line(x=dates, y=neg_score)
+st.plotly_chart(fig)
